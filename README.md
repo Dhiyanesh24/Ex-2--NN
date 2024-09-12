@@ -75,9 +75,9 @@ class Perceptron:
         errors += int(update != 0.0)
       self.misclassified_samples.append(errors)
   def f(self, x: np.array) -> float:
-  return np.dot(x, self._w) + self._b
+    return np.dot(x, self._w) + self._b
   def predict(self, x: np.array):
-  return np.where(self.f(x) >= 0, 1, -1)
+    return np.where(self.f(x) >= 0, 1, -1)
 url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 df = pd.read_csv(url, header=None)
 print(df.head())
@@ -109,7 +109,7 @@ plt.show()
 y = np.where(y == 'Iris-setosa', 1, -1)
 x[:, 0] = (x[:, 0] - x[:, 0].mean()) / x[:, 0].std()
 x[:, 1] = (x[:, 1] - x[:, 1].mean()) / x[:, 1].std()
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25,random_state=0
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25,random_state=0)
 classifier = Perceptron(learning_rate=0.01)
 classifier.fit(x_train, y_train)
 print("accuracy", accuracy_score(classifier.predict(x_test), y_test)*100)
